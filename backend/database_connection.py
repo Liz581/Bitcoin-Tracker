@@ -34,19 +34,23 @@ class DatabaseConnection:
         try:
             # TODO (5.3.2)  
             # insert sql query
+            sql = "INSERT INTO '{}' (timestamp, price) VALUES ('{}','{}');".format(TABLE_NAME, bitcoin.timestamp, bitcoin.price)
 
             # execute sql query
-
+            cursor.execute(sql)
+            
             # commit to db
+            self.__db.commit()
 
             # close
+            cursor.close()
 
             return True
         except Exception as e:
             print(e)
             return False
       
-    def get_all_timestampes(self):
+    def get_all_timestamps(self):
         """
         gets all bitcoin timestamps in the database
 
@@ -59,22 +63,26 @@ class DatabaseConnection:
             output = []
             
             # TODO (5.3.1)
+
             # get cursor
-            
-            
-            # insert sql query
-             
+            cursor = self.__db.cursor()
+
+            # define SQL query
+            sql = "SELECT * FROM '{}';".format(TABLE_NAME)
 
             # execute sql query
-           
+            cursor.execute(sql)
 
             # fetch all results obtained
-            
+            results = cursor.fetchall()
+
             # close
+            cursor.close()
 
-            # convert results to BitcoinTimestamp objects and append to output
+            # print the results
+            print(results)
 
-            return output
+            return results
         except Error as e:
             print(e)
             return []
