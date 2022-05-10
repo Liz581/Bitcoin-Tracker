@@ -36,7 +36,7 @@ async def root():
 repeated task to update bitcoin prices periodically
 """
 @app.on_event("startup")
-@repeat_every(seconds=5) # 5 minutes
+@repeat_every(seconds=60 * 5) # 5 minutes
 async def get_live_bitcoin() -> None:
     num = get_live_bitcoin_price()
     if num != -1:
