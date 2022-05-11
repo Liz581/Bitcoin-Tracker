@@ -1,14 +1,27 @@
 .cardContainer {
+    color: white;
+    white-space: nowrap;
+    text-align: center;
 }
 
 .priceContainerUp {
+    color: #00a267;
+    display: inline-block;
+    width: 50%;
 }
 
 .priceContainerDown {
+    color: #ff3333;
+    display: inline-block;
+    width: 50%;
 }
 
 .priceContainerEqual {
+    color: white;
+    display: inline-block;
+    width: 50%;
 }
 
 .timeContainer {
+    color: orange;
 }

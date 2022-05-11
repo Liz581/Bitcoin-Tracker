@@ -2,7 +2,20 @@
 }
 
 .currencyButtonActive {
+    font-size: 16px;
+    background-color: #1d1d1d;
+    color: #bfd6ff;
+    border-radius: 8px;
+    padding: 8px;
+    border: 0;
+
 }
 
 .currencyButtonDefault {
+    font-size: 16px;
+    background-color: transparent;
+    color: white;
+    border-radius: 8px;
+    padding: 8px;
+    border: 0;
 }

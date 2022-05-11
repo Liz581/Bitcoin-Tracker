@@ -25,6 +25,20 @@ function TimeCurrencyCard ({currency,showData}) {
         CSS  Object
     */
     const priceColor = (index) => {
+        if (showData.length !== index+1) {
+            if (showData[index+1].price < showData[index].price) {
+                return styles.priceContainerUp;
+            }
+            else if (showData[index+1].price > showData[index].price) {
+                return styles.priceContainerDown;
+            }
+            else {
+                return styles.priceContainerEqual;
+            }
+        }
+        else {
+            return styles.priceContainerEqual;
+        }
     }
 
     // ToDo 10.2.2
@@ -40,20 +54,42 @@ function TimeCurrencyCard ({currency,showData}) {
         string
     */
     const arrowSign = (index) => {
+        if (showData.length !== index+1) {
+            if (showData[index+1].price < showData[index].price) {
+                return "↑";
+            }
+            else if (showData[index+1].price > showData[index].price) {
+                return "↓";
+            }
+            else {
+                return '-';
+            }
+        }
+        else {
+            return "=";
+        }
     }
     
     // ToDo 10.2.3
-    return (
-        <>
-        {/* reference for .map https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map */}
+    if (showData) {
+        return (
+            <>
             {showData.map((d, index) => (
-                <>
-                {/* use {currency === 'USD' ? "$" : *other currency sign*} to set the currency notation  
-                reference https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator */}
-                </>
-            ))} 
-        </>      
-    );
+                <div>
+                    <div className={styles.cardContainer}>
+                        {d.timestamp}
+                        {" "}
+                        <div className={priceColor(index)}>
+                            {arrowSign(index)}
+                            {currency === 'USD' ? "$" : "¥"}
+                            {d.price}
+                        </div>
+                    </div>
+                </div>
+            ))}
+            </>
+        );
+    }
 
 }
 
