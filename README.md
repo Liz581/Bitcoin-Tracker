@@ -1,4 +1,4 @@
-# Training-Sprinternship22
+# How to Get Started
 ## Backend
 ### Installation
 1. Make sure that you have Python 3.9 or above by running the following in the command line: `python --version`
